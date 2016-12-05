@@ -1,0 +1,7 @@
+uno/app/App.class
+uno/app/card/Card.class
+uno/app/colors/Colors.class
+uno/app/card/CardEdge.class
+uno/app/card/Bag.class
+uno/app/RandonColor.class
+uno/app/graph/CardsGraph.class

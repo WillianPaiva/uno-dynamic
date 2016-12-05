@@ -1,0 +1,81 @@
+edge .in {
+	size: 3px;
+	fill-color: black;
+}
+graph {
+    fill-color: black;
+}
+
+node {
+    text-size:15px;
+    size-mode: fit;
+    fill-mode: gradient-radial;
+    fill-color: white, black;
+    padding: 5px;
+}
+
+edge {
+
+    stroke-mode: plain;
+    text-size:15px;
+    text-color: white;
+    fill-mode: gradient-vertical;
+    text-alignment: above;
+    size:8px;
+    shape: line;
+}
+
+edge .notin {
+	size: 2px;
+	fill-color: gray, black;
+}
+
+edge .blue{
+	  fill-color: blue, black;
+}
+
+edge .red{
+	  fill-color: red, black;
+}
+
+edge .green{
+	  fill-color: green, black;
+}
+
+edge .yellow{
+	  fill-color: yellow, black;
+}
+
+
+edge .black{
+	  fill-color: black, black;
+}
+
+edge .purple{
+	  fill-color: purple;
+}
+
+node .blue{
+	  fill-color: blue;
+}
+
+node .red{
+	  fill-color: red;
+}
+
+node .green{
+	  fill-color: green;
+}
+
+node .yellow{
+	  fill-color: yellow;
+}
+
+
+node .black{
+	  fill-color: black;
+}
+
+node .purple{
+	  fill-color: purple;
+}
