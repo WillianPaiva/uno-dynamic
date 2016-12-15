@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class Bag {
 
+
   private ArrayList<Card> bag;
 
 
@@ -12,9 +13,26 @@ public class Bag {
     this.bag = bag;
   }
 
+
   public Bag(){
     this.bag = new ArrayList<Card>();
   }
+
+  public ArrayList<Card> intersection(Bag b){
+    ArrayList<Card> res = new ArrayList<Card>();
+    for(Card c:this.bag){
+      if(b.getBag().contains(c)){
+        res.add(c);
+      }
+    }
+    return res;
+  }
+
+  @Override
+	public String toString() {
+		return "Bag [bag=" + bag + "]";
+	}
+
   public void addCard(Card c){
     this.bag.add(c);
   }

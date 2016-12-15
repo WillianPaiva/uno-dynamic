@@ -1,7 +1,11 @@
 uno/app/App.class
 uno/app/card/Card.class
 uno/app/colors/Colors.class
+backtrack/Backtrack.class
+dynamic/Dynamic.class
 uno/app/card/CardEdge.class
+dynamic/Signature$Time.class
+dynamic/Signature.class
 uno/app/card/Bag.class
 uno/app/RandonColor.class
 uno/app/graph/CardsGraph.class

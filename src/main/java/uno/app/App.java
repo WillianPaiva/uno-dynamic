@@ -5,27 +5,53 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.stream.Stream;
+
+import backtrack.Backtrack;
+
+import dynamic.Dynamic;
 
 import uno.app.card.Card;
 import uno.app.colors.Colors;
-import uno.app.graph.CardsGraph;
 
 public class App 
 {
   private static ArrayList<Card> cards = new ArrayList<Card>();
   public static void main( String[] args ) throws IOException, InterruptedException
   {
+
+    long startTime = System.currentTimeMillis();
+    long endTime = System.currentTimeMillis();
+
+    breakline();
     System.out.println(Colors.RED+"Reading File");
     readFile(args[0]);
     breakline();
     cards.forEach(System.out::print);
     breakline();
-    CardsGraph n = new CardsGraph(cards);
-    n.display();
-    n.genDFT();
+
+
+    breakline();
+    Backtrack b = new Backtrack(cards);
+    startTime = System.currentTimeMillis();
+    b.searchLongest();
+    System.out.println(Colors.RED+b.toString());
+    endTime = System.currentTimeMillis();
+    System.out.println(Colors.BLUE+"Total backtrack execution time: " + (endTime-startTime) + "ms"); 
+
+
+
+
+    breakline();
+    Dynamic d = new Dynamic(cards);
+    startTime = System.currentTimeMillis();
+    d.genDFT();
+    System.out.println(Colors.RED+d.toString());
+    d.makeSigs();
+    endTime = System.currentTimeMillis();
+    d.getBags().forEach((x,y) -> {breakline(); System.out.println(y); breakline();});
+    System.out.println(Colors.BLUE+"Total dynamic execution time: " + (endTime-startTime) + "ms"); 
+
   }
 
   public static void breakline()
