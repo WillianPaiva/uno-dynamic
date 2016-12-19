@@ -47,6 +47,6 @@ public class Backtrack {
   }
 
   public String toString(){
-    return "size "+this.max+"\nsequence "+this.longest;
+    return "size "+(this.max-1)+"\nsequence "+this.longest;
   }
 }

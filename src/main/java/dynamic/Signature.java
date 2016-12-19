@@ -20,9 +20,6 @@ import uno.app.card.Card;
 ////////////////////////////////////////////////////////////////////////////////
 
 public class Signature {
-  public enum Time{
-    PAST,PRESENT,FUTURE
-  }
   /////////////////////////////////////////////////////////////////////////
   // an ordered sequence of cards (e.g. (1 ; 2 ; 5)), that describes the //
   // order in which the cards are jumped through in the intersection     //
@@ -47,7 +44,6 @@ public class Signature {
 
   private int size;
 
-  private Time time;
 
   public Signature(ArrayList<Card> sequence, char type, ArrayList<Card> forbiden, int size){
     this.sequence = sequence;
@@ -101,13 +97,7 @@ public class Signature {
 		this.size = size;
 	}
 
-	public Time getTime() {
-    return time;
-  }
 
-  public void setTime(Time time) {
-    this.time = time;
-  }
 
   @Override
   public int hashCode() {
@@ -115,7 +105,6 @@ public class Signature {
     int result = 1;
     result = prime * result + ((forbiden == null) ? 0 : forbiden.hashCode());
     result = prime * result + ((sequence == null) ? 0 : sequence.hashCode());
-    result = prime * result + ((time == null) ? 0 : time.hashCode());
     result = prime * result + type;
     return result;
   }
@@ -138,8 +127,6 @@ public class Signature {
       if (other.sequence != null)
         return false;
     } else if (!sequence.equals(other.sequence))
-      return false;
-    if (time != other.time)
       return false;
     if (type != other.type)
       return false;

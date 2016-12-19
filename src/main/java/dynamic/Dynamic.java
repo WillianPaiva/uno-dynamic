@@ -35,6 +35,9 @@ public class Dynamic {
   private Hashtable<Integer, ArrayList<Signature>> sigs = new Hashtable<Integer, ArrayList<Signature>>();
   private ArrayList<Card> cards;
   private ArrayList<Card> discards = new ArrayList<Card>();
+  private ArrayList<Signature> pastSigs = new ArrayList<Signature>();
+  private ArrayList<Signature> presentSigs = new ArrayList<Signature>();
+  private Signature maxsig = new Signature();
 
   public Dynamic(ArrayList<Card> cards) {
     super();
@@ -158,12 +161,9 @@ public class Dynamic {
   public void makeSigs(){
     Hashtable<Integer, Bag> temp = new Hashtable<Integer, Bag>(bags);
     for(int i = 0; i< temp.size();i++){
-      System.out.println("--->"+i);
       Bag presentBag = temp.get(i);
       Bag pastBag = new Bag();
       Bag futureBag = new Bag();
-      ArrayList<Signature> pastSigs = new ArrayList<Signature>();
-      ArrayList<Signature> presentSigs = new ArrayList<Signature>();
       if(i!=0){
         pastBag = temp.get(i-1);
       }
@@ -234,36 +234,53 @@ public class Dynamic {
         }
 
         Signature result = new Signature(sigSequence,sigType,sigForbiden,size);
-        // System.out.println(pastSigs);
-        // for(Signature ps:pastSigs){
-        //   if(haveall(ps.getSequence(),l) ){
-        //     ArrayList<Card> sigSeq = new ArrayList<Card>();
-        //     sigSeq.addAll(ps.getSequence());
-        //     sigSeq.addAll(sigSequence);
-        //     char sigT = 'n';
-        //     if((ps.getType() == 'a' || ps.getType() == 'b') && (sigType == 'a' || sigType == 'b')){
-        //         sigT = 'v';
-        //      }
-        //     int siz = size + ps.getSize();
-        //     Signature res = new Signature(sigSeq,sigT,sigForbiden,siz);
-        //     presentSigs.add(res);
-        //     System.out.println(res);
-        //     }
-        // }
-        if(!sigSequence.isEmpty()){
-          System.out.println(result);
-          System.out.println(l);
+        addSigPresent(result);
+        for(Signature ps:pastSigs){
+          addSigPresent(ps);
+          if(haveall(ps.getSequence(),l) ){
+            ArrayList<Card> sigSeq = new ArrayList<Card>();
+            sigSeq.addAll(ps.getSequence());
+            sigSeq.addAll(sigSequence);
+            char sigT = 'n';
+            if((ps.getType() == 'a' || ps.getType() == 'b') && (sigType == 'a' || sigType == 'b')){
+                sigT = 'v';
+             }
+            int siz = size + ps.getSize();
+            if(sigT != 'n'){
+              Signature res = new Signature(sigSeq,sigT,sigForbiden,siz);
+              addSigPresent(res);
+            }
+            }
         }
-        // if(pastPresentIntersection.contains(l.get(0))){
-        //   ArrayList<Card> term = new ArrayList<Card>();
-        //   Signature s = search (pastSigs,term,'a');
-        //   if(s != null){
-        //   }
-        // }
+      }
+      pastSigs = new ArrayList<Signature>(presentSigs);
+      getMax();
+      presentSigs.clear();
+    }
+
+    System.out.println(maxsig);
+  }
+
+  private void getMax(){
+    for(Signature s:pastSigs){
+      if(s.getSize() > this.maxsig.getSize()){
+        this.maxsig = s;
       }
     }
   }
 
+  private void addSigPresent(Signature s){
+    boolean found = false;
+    for(Signature sg:presentSigs){
+      if(sg.equals(s)){
+        found = true;
+        sg.setSize((sg.getSize()<s.getSize()) ? s.getSize():sg.getSize());
+      }
+    }
+    if(!found){
+      presentSigs.add(s);
+    }
+  }
 
   private boolean haveall(ArrayList<Card> term,ArrayList<Card> seq ){
     for(Card c:term){
