@@ -4,6 +4,7 @@ import uno.app.colors.Colors;
 
 public class Card {
   private int nb;
+  private int label;
   private int color;
   public Card(String card)
   {
@@ -20,7 +21,21 @@ public void setNb(int nb) {
 	this.nb = nb;
 }
 
-public int getColor() {
+	/**
+	 * @return the label
+	 */
+	public int getLabel() {
+		return label;
+	}
+
+	/**
+	 * @param label the label to set
+	 */
+	public void setLabel(int label) {
+		this.label = label;
+	}
+
+	public int getColor() {
 	return color;
 }
 

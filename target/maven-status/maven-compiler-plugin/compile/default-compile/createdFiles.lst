@@ -1,6 +1,7 @@
 uno/app/App.class
 uno/app/card/Card.class
 uno/app/colors/Colors.class
+colorcoding/ColorCoding.class
 backtrack/Backtrack.class
 dynamic/Dynamic.class
 uno/app/card/CardEdge.class

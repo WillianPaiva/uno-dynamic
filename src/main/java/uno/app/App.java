@@ -9,6 +9,8 @@ import java.util.stream.Stream;
 
 import backtrack.Backtrack;
 
+import colorcoding.ColorCoding;
+
 import dynamic.Dynamic;
 
 import uno.app.card.Card;
@@ -43,7 +45,7 @@ public class App
 
 
     breakline();
-    Dynamic d = new Dynamic(cards);
+    Dynamic d = new Dynamic(new ArrayList<Card>(cards));
     startTime = System.currentTimeMillis();
     d.genDFT();
     System.out.println(Colors.RED+d.toString());
@@ -51,6 +53,8 @@ public class App
     endTime = System.currentTimeMillis();
     d.getBags().forEach((x,y) -> {breakline(); System.out.println(y); breakline();});
     System.out.println(Colors.BLUE+"Total dynamic execution time: " + (endTime-startTime) + "ms"); 
+
+    ColorCoding test = new ColorCoding(cards,cards.size());
 
   }
 
