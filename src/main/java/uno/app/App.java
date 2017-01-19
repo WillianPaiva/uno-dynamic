@@ -54,7 +54,7 @@ public class App
     d.getBags().forEach((x,y) -> {breakline(); System.out.println(y); breakline();});
     System.out.println(Colors.BLUE+"Total dynamic execution time: " + (endTime-startTime) + "ms"); 
 
-    ColorCoding test = new ColorCoding(cards,cards.size());
+    ColorCoding test = new ColorCoding(cards,9);
 
   }
 
