@@ -77,6 +77,8 @@ public class Dynamic {
     }
   }
 
+
+  //takes a index of the bag and calculates the bag of the begining of the tree
   private void makeFirstBag(int index){
     Bag b = new Bag();
     Card actual = cards.get(0);
@@ -93,7 +95,7 @@ public class Dynamic {
   }
 
 
-
+  //calculates the sequence from a given card 
   private ArrayList<Card> getSequence(Card c){
     ArrayList<Card> temp = new ArrayList<Card>();
     int indice = 0;
@@ -110,6 +112,7 @@ public class Dynamic {
     return temp;
   }
 
+  //find the next card on the list of available card 
   private Card getNext(Card c){
     for(Card d: this.cards){
       if(c.connect(d)){
@@ -120,6 +123,7 @@ public class Dynamic {
   }
 
 
+  //the function responseble to calculate a bags based on a previus bag
   private boolean makeBag(int index){
     Bag b = bags.get(bags.size()-1).removeLast();
     ArrayList<Card> temp = b.getBag();
@@ -157,7 +161,7 @@ public class Dynamic {
 	public void setBags(Hashtable<Integer, Bag> bags) {
 		this.bags = bags;
 	}
-
+  //big mess function to make signatures that has a real perfermance problem 
   public void makeSigs(){
     Hashtable<Integer, Bag> temp = new Hashtable<Integer, Bag>(bags);
     for(int i = 0; i< temp.size();i++){

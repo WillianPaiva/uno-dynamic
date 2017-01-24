@@ -1,11 +1,12 @@
-uno/app/App.class
-uno/app/card/Card.class
 uno/app/colors/Colors.class
-colorcoding/ColorCoding.class
 backtrack/Backtrack.class
 dynamic/Dynamic.class
 uno/app/card/CardEdge.class
 dynamic/Signature.class
 uno/app/card/Bag.class
-uno/app/RandonColor.class
 uno/app/graph/CardsGraph.class
+uno/app/App.class
+uno/app/card/Card.class
+colorcoding/ColorCoding.class
+colorcoding/CardList.class
+uno/app/RandonColor.class
